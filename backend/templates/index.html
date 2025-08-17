@@ -1,0 +1,471 @@
+{% import "macros.html" as macros %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Platform Product Listing Automation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1>🛍️ Multi-Platform Product Listing</h1>
+            <p>Streamline your Meesho, Flipkart & Myntra listings</p>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Progress Container -->
+        <div class="progress-container">
+            <h3>Listing Progress</h3>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 0%"></div>
+            </div>
+            <div class="platform-status">
+                <div class="status-card">
+                    <h4><span class="status-indicator status-pending"></span>Meesho</h4>
+                    <p>Ready to list</p>
+                </div>
+                <div class="status-card">
+                    <h4><span class="status-indicator status-pending"></span>Flipkart</h4>
+                    <p>Ready to list</p>
+                </div>
+                <div class="status-card">
+                    <h4><span class="status-indicator status-pending"></span>Myntra</h4>
+                    <p>Ready to list</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Form -->
+        <div class="form-container">
+            <form id="productForm" class="form-wrapper">
+
+                <!-- Basic Information Section -->
+                <div class="form-section" id="basicInfo">
+                    <div class="section-header">
+                        <div class="section-title">
+                            📝 Basic Information
+                        </div>
+                        <div class="section-toggle">▼</div>
+                    </div>
+                    <div class="section-content">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label class="form-label" for="productName">
+                                    Product Name <span class="required">*</span>
+                                    <div class="platform-indicators">
+                                        {{ macros.platform_indicators('f,me,my') }}
+                                    </div>
+                                </label>
+                                <input value="Gorkhastyle" type="text" id="productName" name="productName" class="form-input" placeholder="e.g., Elegant Gold-Plated Necklace" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="sku">
+                                    SKU/Product ID <span class="required">*</span>
+                                    <div class="platform-indicators">
+                                        {{ macros.platform_indicators('f,me,my') }}
+                                    </div>
+                                </label>
+                                <select name="sku" id="sku" required>
+                                    <option value="">Select SKU</option>
+                                    {% for sku in sku_list %}
+                                        <option value="{{ sku }}">{{ sku }}</option>
+                                    {% endfor %}
+                                </select>
+                                <div id="skuValidation" class="field-error" style="display: none;"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="productType">
+                                    Product Type <span class="required">*</span>
+                                    {{ macros.platform_indicators('f,me,my') }}
+                                </label>
+                                <select id="productType" name="productType" class="form-select" required>
+                                    <option value="">Select Product Type</option>
+                                    <option value="necklace">Necklace</option>
+                                    <option value="bangle">Bangle</option>
+                                    <option value="chain">Chain</option>
+                                    <option value="earring">Earring</option>
+                                    <option value="ring">Ring</option>
+                                    <option value="bracelet">Bracelet</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="netWeight">
+                                    Net Weight (g) <span class="required">*</span>
+                                    {{ macros.platform_indicators('f,me') }}
+                                </label>
+                                <input type="number" id="netWeight" name="netWeight" class="form-input" placeholder="e.g., 20" min="0" step="0.01" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="netQuantity">
+                                    Net Quantity <span class="required">*</span>
+                                    {{ macros.platform_indicators('f,me,my') }}
+                                </label>
+                                <select id="netQuantity" name="netQuantity" class="form-select" required>
+                                    <option value="">Select Quantity</option>
+                                    {% for qty in range(1, 6) %}
+                                        <option value="{{ qty }}"{% if qty == 1 %} selected{% endif %}>{{ qty }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="description">Product Description <span class="required">*</span> {{ macros.platform_indicators('f,me,my') }}</label>
+                            <textarea id="description" name="description" class="form-textarea" placeholder="Detailed product description..." required></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Variant Generator Section -->
+                <div class="form-section" id="variantSection" style="display: none;">
+                    <div class="section-header">
+                        <div class="section-title">
+                            🔄 Product Variants
+                        </div>
+                        <div class="section-toggle">▼</div>
+                    </div>
+                    <div class="section-content">
+                        <div class="variant-generator">
+                            <h4>Generate Bangle Variants</h4>
+                            <p>Automatically create variants for different bangle sizes (2.4", 2.6", 2.8")</p>
+                            <button type="button" id="generateVariants" class="btn btn-secondary">
+                                🔄 Generate Variants
+                            </button>
+
+                            <div id="variantsList" class="variants-list" style="display: none;">
+                                <!-- Variants will be populated here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Variant Generator Section -->
+                <div class="form-section" id="variantSection" style="display: none;">
+                    <div class="section-header">
+                        <div class="section-title">
+                            🔄 Product Variants
+                        </div>
+                        <div class="section-toggle">▼</div>
+                    </div>
+                    <div class="section-content">
+                        <div class="variant-generator">
+                            <h4>Generate Bangle Variants</h4>
+                            <p>Automatically create variants for different bangle sizes (2.4", 2.6", 2.8")</p>
+                            <button type="button" id="generateVariants" class="btn btn-secondary">
+                                🔄 Generate Variants
+                            </button>
+
+                            <div id="variantsList" class="variants-list" style="display: none;">
+                                <!-- Variants will be populated here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pricing Section -->
+                <div class="form-section" id="pricing">
+                    <div class="section-header">
+                        <div class="section-title">
+                            💰 Pricing & Inventory
+                        </div>
+                        <div class="section-toggle">▼</div>
+                    </div>
+                    <div class="section-content">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label class="form-label" for="product_mrp">
+                                    MRP (₹) <span class="required">*</span>{{ macros.platform_indicators('f,me,my') }}
+                                </label>
+                                <input type="number" id="product_mrp" name="product_mrp" class="form-input" placeholder="1499" min="0" step="0.01">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="meesho_price">
+                                    Selling Price (₹) <span class="required">*</span>
+                                    {{ macros.platform_indicators('f,me') }}
+                                </label>
+                                <input type="number" id="meesho_price" name="meesho_price" class="form-input" placeholder="799" min="0" step="0.01">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="inventory">Stock Quantity <span class="required">*</span> {{ macros.platform_indicators('f,me,my') }}</label>
+                                <input type="number" id="inventory" name="inventory" class="form-input" placeholder="50" min="0">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="hsnCode">HSN Code <span class="required">*</span> {{ macros.platform_indicators('f,me,my') }}</label>
+                                <input type="text" id="hsnCode" name="hsnCode" class="form-input" placeholder="711319">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="gst-dropdown">GST(%) <span class="required">*</span> {{ macros.platform_indicators('f,me') }}</label>
+                                <select name="gst" id="gst-dropdown" required>
+                                    <option value="">Select GST</option>
+                                    {% for gst in gst_list %}
+                                        <option value="{{ gst }}">{{ gst }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Details Section -->
+                <div class="form-section" id="productDetails">
+                    <div class="section-header">
+                        <div class="section-title">
+                            ✨ Product Details
+                        </div>
+                        <div class="section-toggle">▼</div>
+                    </div>
+                    <div class="section-content">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label class="form-label" for="material">Material <span class="required">*</span> {{ macros.platform_indicators('f,me,my') }}</label>
+                                <select id="material" name="material" class="form-select">
+                                    <option value="">Select Material</option>
+                                    <option value="Alloy">Alloy</option>
+                                    <option value="Bentex">Bentex</option>
+                                    <option value="Brass">Brass</option>
+                                    <option value="Brass & Copper">Brass &amp; Copper</option>
+                                    <option value="Bronze">Bronze</option>
+                                    <option value="Copper">Copper</option>
+                                    <option value="Fabric">Fabric</option>
+                                    <option value="Five Metal">Five Metal</option>
+                                    <option value="German Silver">German Silver</option>
+                                    <option value="Glass">Glass</option>
+                                    <option value="Meta">Meta</option>
+                                    <option value="Plastic">Plastic</option>
+                                    <option value="Pure 925 Sterling Silver">Pure 925 Sterling Silver</option>
+                                    <option value="Shell">Shell</option>
+                                    <option value="Silver">Silver</option>
+                                    <option value="Stainless Steel">Stainless Steel</option>
+                                    <option value="Steel">Steel</option>
+                                    <option value="Sterling Silver">Sterling Silver</option>
+                                    <option value="Synthetic">Synthetic</option>
+                                    <option value="Terracota">Terracota</option>
+                                    <option value="Thread">Thread</option>
+                                    <option value="Wood">Wood</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="color">Color <span class="required">*</span> {{ macros.platform_indicators('f,me,my') }}</label>
+                                <select id="color" name="color" class="form-select" required>
+                                    <option value="">Select Color</option>
+                                    <option value="Beige">Beige</option>
+                                    <option value="Black">Black</option>
+                                    <option value="Blue">Blue</option>
+                                    <option value="Brown">Brown</option>
+                                    <!-- <option value="Coral">Coral</option> -->
+                                    <!-- <option value="Cream">Cream</option> -->
+                                    <option value="Gold" selected>Gold</option>
+                                    <option value="Green">Green</option>
+                                    <!-- <option value="Grey">Grey</option> -->
+                                    <!-- <option value="Grey Melange">Grey Melange</option> -->
+                                    <!-- <option value="Khaki">Khaki</option> -->
+                                    <!-- <option value="Lavendar">Lavendar</option> -->
+                                    <option value="Maroon">Maroon</option>
+                                    <!-- <option value="Metallic">Metallic</option> -->
+                                    <!-- <option value="Mint Green">Mint Green</option> -->
+                                    <option value="Multicolor">Multicolor</option>
+                                    <!-- <option value="Mustard">Mustard</option> -->
+                                    <!-- <option value="Navy Blue">Navy Blue</option> -->
+                                    <!-- <option value="Nude">Nude</option> -->
+                                    <!-- <option value="Olive">Olive</option> -->
+                                    <option value="Orange">Orange</option>
+                                    <!-- <option value="Peach">Peach</option> -->
+                                    <option value="Pink">Pink</option>
+                                    <option value="Purple">Purple</option>
+                                    <option value="Red">Red</option>
+                                    <!-- <option value="Rust">Rust</option> -->
+                                    <option value="Silver">Silver</option>
+                                    <!-- <option value="Teal">Teal</option> -->
+                                    <option value="White">White</option>
+                                    <option value="Yellow">Yellow</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="plating">Plating <span class="required">*</span> {{ macros.platform_indicators('f,me,my') }}</label>
+                                <select id="plating" name="plating" class="form-select" required>
+                                    <option value="">Select Plating</option>
+                                    <option value="1Gram Gold">1Gram Gold</option>
+                                    <option value="Brass Plated">Brass Plated</option>
+                                    <option value="Copper Plated">Copper Plated</option>
+                                    <option value="Gold Plated" selected>Gold Plated</option>
+                                    <option value="Gold Plated - Matte">Gold Plated - Matte</option>
+                                    <option value="Micro Plating">Micro Plating</option>
+                                    <option value="No Plating">No Plating</option>
+                                    <option value="Oxidised Gold">Oxidised Gold</option>
+                                    <option value="Oxidised Silver">Oxidised Silver</option>
+                                    <option value="Rhodium Plated">Rhodium Plated</option>
+                                    <option value="Rose Gold Plated">Rose Gold Plated</option>
+                                    <option value="Silver Plated">Silver Plated</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="type">Type <span class="required">*</span> {{ macros.platform_indicators('f,me,my') }}</label>
+                                <select id="type" name="type" class="form-select" required>
+                                    <option value="">Select Type</option>
+                                    <option value="Chain">Chain</option>
+                                    <option value="Layered">Layered</option>
+                                    <option value="Necklace" selected>Necklace</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="stoneType">Stone Type <span class="required">*</span> {{ macros.platform_indicators('f,my') }}</label>
+                                <select id="stoneType" name="stoneType" class="form-select" required>
+                                    <option value="">Select Stone Type</option>
+                                    <option value="Agate">Agate</option>
+                                    <option value="Alexandrite">Alexandrite</option>
+                                    <option value="American Diamond">American Diamond</option>
+                                    <option value="Amethyst">Amethyst</option>
+                                    <option value="Artificial Beads">Artificial Beads</option>
+                                    <option value="Artificial Stones">Artificial Stones</option>
+                                    <option value="Artificial Stones &amp; Beads">Artificial Stones &amp; Beads</option>
+                                    <option value="Citrine">Citrine</option>
+                                    <option value="Crystals">Crystals</option>
+                                    <option value="Cubic Zirconia">Cubic Zirconia</option>
+                                    <option value="Cubic Zirconia/American Diamond">Cubic Zirconia/American Diamond</option>
+                                    <option value="Emerald">Emerald</option>
+                                    <option value="Garnet">Garnet</option>
+                                    <option value="Kundan">Kundan</option>
+                                    <option value="Labradorite">Labradorite</option>
+                                    <option value="Lapis">Lapis</option>
+                                    <option value="No Stone">No Stone</option>
+                                    <option value="Onyx">Onyx</option>
+                                    <option value="Pearls">Pearls</option>
+                                    <option value="Peridot">Peridot</option>
+                                    <option value="Polki">Polki</option>
+                                    <option value="Quartz">Quartz</option>
+                                    <option value="Rhinestone">Rhinestone</option>
+                                    <option value="Rhodolite">Rhodolite</option>
+                                    <option value="Ruby">Ruby</option>
+                                    <option value="Rudrakshi">Rudrakshi</option>
+                                    <option value="Sapphire">Sapphire</option>
+                                    <option value="Tigers Eyes">Tigers Eyes</option>
+                                    <option value="Topaz">Topaz</option>
+                                    <option value="Tourmaline">Tourmaline</option>
+                                    <option value="Turquoise">Turquoise</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="size">Sizing <span class="required">*</span> {{ macros.platform_indicators('f,me') }}</label>
+                                <select id="size" name="size" class="form-select" required>
+                                    <option value="">Select Sizing</option>
+                                    <option value="Adjustable">Adjustable</option>
+                                    <option value="Bib">Bib</option>
+                                    <option value="Choker">Choker</option>
+                                    <option value="Long">Long</option>
+                                    <option value="Non-Adjustable">Non-Adjustable</option>
+                                    <option value="Short">Short</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="occasion">Occasion <span class="required">*</span> {{ macros.platform_indicators('f,me,my') }}</label>
+                                <select id="occasion" name="occasion" class="form-select" required>
+                                    <option value="">Select Occasion</option>
+                                    <option value="Bridal">Bridal</option>
+                                    <option value="Casual">Casual</option>
+                                    <option value="Ethnic">Ethnic</option>
+                                    <option value="Ethnic Casual">Ethnic Casual</option>
+                                    <option value="Ethnic Party">Ethnic Party</option>
+                                    <option value="Festive">Festive</option>
+                                    <option value="Western">Western</option>
+                                    <option value="Western Casual">Western Casual</option>
+                                    <option value="Western Party">Western Party</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Variant Generator Section -->
+                <div class="form-section" id="variantSection" style="display: none;">
+                    <div class="section-header">
+                        <div class="section-title">
+                            🔄 Product Variants
+                        </div>
+                        <div class="section-toggle">▼</div>
+                    </div>
+                    <div class="section-content">
+                        <div class="variant-generator">
+                            <h4>Generate Bangle Variants</h4>
+                            <p>Automatically create variants for different bangle sizes (2.4", 2.6", 2.8")</p>
+                            <button type="button" id="generateVariants" class="btn btn-secondary">
+                                🔄 Generate Variants
+                            </button>
+
+                            <div id="variantsList" class="variants-list" style="display: none;">
+                                <!-- Variants will be populated here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Images Section -->
+                <div class="form-section" id="imagesSection">
+                    <div class="section-header">
+                        <div class="section-title">
+                            📸 Product Images
+                        </div>
+                        <div class="section-toggle">▼</div>
+                    </div>
+                    <div class="section-content">
+                        <div class="image-upload" id="imageUpload">
+                            <h4>📁 Images loaded from: images/{SKU}/</h4>
+                            <p>Images will be automatically loaded from the SKU folder</p>
+                            <div id="imagePreview" class="image-preview"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="action-buttons">
+                    <button type="button" id="validateForm" class="btn btn-outline">
+                        ✅ Validate Data
+                    </button>
+
+                    <button type="button" id="saveProduct" class="btn btn-primary">
+                        💾 Save Product
+                    </button>
+                </div>
+
+                <!-- Export Buttons -->
+                <div class="export-buttons">
+                    <button type="button" id="exportMyntra" class="btn btn-warning platform-myntra">
+                        📊 Export to Myntra (Excel)
+                    </button>
+
+                    <button type="button" id="exportFlipkart" class="btn btn-warning platform-flipkart">
+                        🛒 Export to Flipkart
+                    </button>
+
+                    <button type="button" id="exportMeesho" class="btn btn-warning platform-meesho">
+                        🛍️ Export to Meesho
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container"></div>
+
+    <!-- JavaScript -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

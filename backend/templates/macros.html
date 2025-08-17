@@ -1,0 +1,12 @@
+{% macro platform_indicators(platforms) -%}
+  {%- set platform_map = {
+      'f': 'flipkart',
+      'me': 'meesho',
+      'my': 'myntra'
+    } -%}
+  {%- for key in platforms.split(',') if key.strip() %}
+    {%- if key.strip() in platform_map %}
+      <div class="platform-indicator {{ platform_map[key.strip()] }}"></div>
+    {%- endif %}
+  {%- endfor %}
+{%- endmacro %}

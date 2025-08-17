@@ -1,0 +1,32 @@
+{
+    "k_gs_50_line_hydro_mile_sasto": {
+        "myntra": true,
+        "meesho": false,
+        "flipkart": true
+    },
+    "k_kantha_small": {
+        "myntra": true,
+        "meesho": true,
+        "flipkart": true
+    },
+    "k_50_line_mile_sasto_2": {
+        "myntra": false,
+        "meesho": false,
+        "flipkart": true
+    },
+    "k_ds_green_navgeri": {
+        "myntra": false,
+        "meesho": true,
+        "flipkart": true
+    },
+    "k_gs_green_mile": {
+        "myntra": true,
+        "meesho": true,
+        "flipkart": true
+    },
+    "k_940_anitque_stone": {
+        "myntra": true,
+        "meesho": true,
+        "flipkart": true
+    }
+}
