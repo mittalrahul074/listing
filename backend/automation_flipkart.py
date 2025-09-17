@@ -24,16 +24,22 @@ def human_typing_delay():
 def get_driver():
     opts = uc.ChromeOptions()
     opts.add_argument(f"--user-data-dir={PROFILE_DIR}")
+    opts.add_argument("--profile-directory=flipkart_profile")
     return uc.Chrome(options=opts)
 
 def login_if_needed(driver):
     driver.get("https://seller.flipkart.com/index.html#dashboard")
     human_delay(3, 5)  # Random delay after page load
     
-    if "referral_url" in driver.current_url.lower():
+    print("DEBUG URL:", driver.current_url)
+    current_url = driver.current_url.lower()
+    if "referral_url" in current_url:
+        print("⚠️ Login required. Please log in manually.")
         input("Log in on Flipkart, then press Enter...")
         while "referral_url" in driver.current_url.lower():
             human_delay(0.5, 1.5)
+
+        print("✅ Login successful, continuing automation.")
 
 def navigate_to_listing(driver):
     wait = WebDriverWait(driver, 15)
@@ -527,8 +533,8 @@ def upload_flipkart_images(driver, sku_folder):
             print("⚠️ Continuing with next image...")
             continue
 
-def set_input_value(driver, selector, value):
-    input_element = driver.find_element(By.ID, selector)
+def set_input_value(driver, selector, value, b=By.ID):
+    input_element = driver.find_element(b, selector)
     driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", input_element)
     human_delay(0.3, 0.8)
     input_element.clear()
@@ -686,11 +692,11 @@ def handle_confirmation_dialog(driver):
         print(f"⚠️ Error handling confirmation dialog: {e}")
         return False
 
-def set_input_value_with_retry(driver, selector, value, max_retries=3):
+def set_input_value_with_retry(driver, selector, value, max_retries=3, b=By.ID):
     """Set input value with retry logic"""
     for attempt in range(max_retries):  
         try:
-            set_input_value(driver, selector, value)
+            set_input_value(driver, selector, value,b)
             return True
         except Exception as e:
             if attempt < max_retries - 1:
@@ -714,13 +720,57 @@ def set_select_with_retry(driver, id, value, default_value=None, max_retries=3):
                 print(f"❌ Failed to set {id} after {max_retries} attempts: {e}")
                 raise
 
+def set_keywords(driver, keyw):
+    keywords = [kw.strip() for kw in keyw.split(",") if kw.strip()]
+    print(f"🔍 Setting {len(keywords)} keyword(s): {keywords}")
+
+    if not keywords:
+        print("⚠️ No keywords provided, using default keyword 'jewellery'")
+        keywords = ["jewellery"]
+
+    for idx, keyword in enumerate(keywords):
+        print(f"🔤 Setting keyword {idx}: '{keyword}'")
+
+        if idx > 0:
+            # Click "Add More" (+) button for new keyword field
+            add_more_btns = driver.find_elements(By.CLASS_NAME, "sqtrJ")
+            if not add_more_btns:
+                raise Exception("❌ Could not find 'Add More' button for keywords")
+            add_more_btn = add_more_btns[-1]  # always take the last one (+)
+            driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", add_more_btn)
+            human_delay(0.5, 1.0)
+            add_more_btn.click()
+            human_delay(1, 2)  # wait for new input to render
+
+        # Find keyword inputs by NAME (unique per field)
+        input_name = f"keywords_{idx}_value"
+        try:
+            field = WebDriverWait(driver, 10).until(
+                EC.presence_of_element_located((By.NAME, input_name))
+            )
+        except TimeoutException:
+            raise Exception(f"❌ Keyword input '{input_name}' not found")
+
+        # Clear & type keyword in a human-like way
+        field.clear()
+        for ch in keyword:
+            field.send_keys(ch)
+            human_typing_delay()
+
+        print(f"✅ Keyword {idx} set: {keyword}")
+
+
 def automate_flipkart_listing(product_data, sku_folder):
     driver = None
     success = False
     
     try:
         # Ensure SKU status entry exists before starting automation
-        ensure_sku_status_exists(product_data['sku'])
+        if(ensure_sku_status_exists(product_data['sku'])):
+            print(f"✅ SKU status entry exists for {product_data['sku']}, plese veryfy before proceeding.")
+            #abort
+            return False
+         
         
         driver = get_driver()
         wait = WebDriverWait(driver, 15)
@@ -849,6 +899,9 @@ def automate_flipkart_listing(product_data, sku_folder):
             textarea = wait.until(EC.presence_of_element_located((By.ID, "description")))
             textarea.clear()
             textarea.send_keys(f"{product_data['description']}")
+            # product_data['keywords'] is a string sprated with commas and every keyword should be trimmed, seperated and set to name "keywords_0_value" here 0 is index which should be incremented based on number of keywords
+            print(product_data['keywords'])
+            set_keywords(driver, product_data['keywords'])
             click_save(driver)
             human_delay(2, 4)  # Pause before final step
 
@@ -927,12 +980,6 @@ def automate_flipkart_listing(product_data, sku_folder):
         
         # Cleanup
         human_delay(2, 4)  # Final pause before cleanup
-        if driver:
-            try:
-                driver.quit()
-                print("✅ Browser closed successfully")
-            except Exception as e:
-                print(f"⚠️ Error closing browser: {e}")
         
         # Return success status
         return success
@@ -950,7 +997,7 @@ def ensure_sku_status_exists(sku):
         else:
             print(f"ℹ️ SKU status entry already exists for {sku}")
             
-        return status[sku]
+        return status[sku]["flipkart"]
         
     except Exception as e:
         print(f"⚠️ Error ensuring SKU status exists: {e}")

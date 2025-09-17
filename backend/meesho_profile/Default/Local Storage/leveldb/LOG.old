@@ -1,15 +1,15 @@
-2025/08/15-12:36:25.866 5024 Reusing MANIFEST C:\Projects\ecommerce-listing-automation\backend\meesho_profile\Default\Local Storage\leveldb/MANIFEST-000001
-2025/08/15-12:36:25.886 5024 Recovering log #103
-2025/08/15-12:36:25.895 5024 Reusing old log C:\Projects\ecommerce-listing-automation\backend\meesho_profile\Default\Local Storage\leveldb/000103.log 
-2025/08/15-12:37:25.988 4d14 Level-0 table #107: started
-2025/08/15-12:37:26.036 4d14 Level-0 table #107: 12965 bytes OK
-2025/08/15-12:37:26.043 4d14 Delete type=0 #103
-2025/08/15-12:37:26.045 4d14 Compacting 4@0 + 1@1 files
-2025/08/15-12:37:26.075 4d14 Generated table #108@0: 7537 keys, 106543 bytes
-2025/08/15-12:37:26.076 4d14 Compacted 4@0 + 1@1 files => 106543 bytes
-2025/08/15-12:37:26.077 4d14 compacted to: files[ 0 1 1 0 0 0 0 ]
-2025/08/15-12:37:26.081 4d14 Delete type=2 #95
-2025/08/15-12:37:26.081 4d14 Delete type=2 #98
-2025/08/15-12:37:26.081 4d14 Delete type=2 #101
-2025/08/15-12:37:26.082 4d14 Delete type=2 #104
-2025/08/15-12:37:26.082 4d14 Delete type=2 #107
+2025/09/18-03:00:50.778 4c98 Reusing MANIFEST C:\Projects\ecommerce-listing-automation\backend\meesho_profile\Default\Local Storage\leveldb/MANIFEST-000001
+2025/09/18-03:00:50.799 4c98 Recovering log #250
+2025/09/18-03:00:50.804 4c98 Reusing old log C:\Projects\ecommerce-listing-automation\backend\meesho_profile\Default\Local Storage\leveldb/000250.log 
+2025/09/18-03:01:50.873 4c98 Level-0 table #254: started
+2025/09/18-03:01:50.881 4c98 Level-0 table #254: 11512 bytes OK
+2025/09/18-03:01:50.886 4c98 Delete type=0 #250
+2025/09/18-03:01:50.887 4c98 Compacting 4@0 + 1@1 files
+2025/09/18-03:01:50.943 4c98 Generated table #255@0: 21403 keys, 292595 bytes
+2025/09/18-03:01:50.943 4c98 Compacted 4@0 + 1@1 files => 292595 bytes
+2025/09/18-03:01:50.945 4c98 compacted to: files[ 0 1 1 0 0 0 0 ]
+2025/09/18-03:01:51.036 4c98 Delete type=2 #242
+2025/09/18-03:01:51.037 4c98 Delete type=2 #245
+2025/09/18-03:01:51.037 4c98 Delete type=2 #248
+2025/09/18-03:01:51.037 4c98 Delete type=2 #251
+2025/09/18-03:01:51.037 4c98 Delete type=2 #254

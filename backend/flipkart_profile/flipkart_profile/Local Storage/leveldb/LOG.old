@@ -1,0 +1,20 @@
+2025/09/18-02:37:16.568 2ca8 Reusing MANIFEST C:\Projects\ecommerce-listing-automation\backend\flipkart_profile\flipkart_profile\Local Storage\leveldb/MANIFEST-000001
+2025/09/18-02:37:16.579 2ca8 Recovering log #13
+2025/09/18-02:37:16.583 2ca8 Level-0 table #16: started
+2025/09/18-02:37:16.768 2ca8 Level-0 table #16: 38957 bytes OK
+2025/09/18-02:37:16.773 2ca8 Delete type=0 #13
+2025/09/18-02:37:32.110 3cd4 Level-0 table #19: started
+2025/09/18-02:37:32.130 3cd4 Level-0 table #19: 35615 bytes OK
+2025/09/18-02:37:32.133 3cd4 Delete type=0 #17
+2025/09/18-02:38:16.797 3cd4 Level-0 table #21: started
+2025/09/18-02:38:16.806 3cd4 Level-0 table #21: 35791 bytes OK
+2025/09/18-02:38:16.807 3cd4 Delete type=0 #18
+2025/09/18-02:38:16.808 3cd4 Compacting 4@0 + 1@1 files
+2025/09/18-02:38:16.817 3cd4 Generated table #22@0: 18 keys, 36164 bytes
+2025/09/18-02:38:16.817 3cd4 Compacted 4@0 + 1@1 files => 36164 bytes
+2025/09/18-02:38:16.818 3cd4 compacted to: files[ 0 1 0 0 0 0 0 ]
+2025/09/18-02:38:16.819 3cd4 Delete type=2 #12
+2025/09/18-02:38:16.819 3cd4 Delete type=2 #14
+2025/09/18-02:38:16.819 3cd4 Delete type=2 #16
+2025/09/18-02:38:16.820 3cd4 Delete type=2 #19
+2025/09/18-02:38:16.820 3cd4 Delete type=2 #21

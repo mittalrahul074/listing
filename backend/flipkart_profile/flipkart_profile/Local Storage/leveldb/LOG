@@ -1,0 +1,11 @@
+2025/09/18-02:56:47.443 3648 Reusing MANIFEST C:\Projects\ecommerce-listing-automation\backend\flipkart_profile\flipkart_profile\Local Storage\leveldb/MANIFEST-000001
+2025/09/18-02:56:47.462 3648 Recovering log #20
+2025/09/18-02:56:47.465 3648 Level-0 table #24: started
+2025/09/18-02:56:47.704 3648 Level-0 table #24: 42280 bytes OK
+2025/09/18-02:56:47.712 3648 Delete type=0 #20
+2025/09/18-02:57:47.731 318 Level-0 table #27: started
+2025/09/18-02:57:47.743 318 Level-0 table #27: 35618 bytes OK
+2025/09/18-02:57:47.747 318 Delete type=0 #25
+2025/09/18-02:58:49.515 318 Level-0 table #29: started
+2025/09/18-02:58:49.522 318 Level-0 table #29: 35520 bytes OK
+2025/09/18-02:58:49.525 318 Delete type=0 #26

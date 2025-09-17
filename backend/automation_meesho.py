@@ -185,6 +185,14 @@ def select_free_size(driver):
     human_delay(0.2, 0.5)
     apply_button.click()
 
+def keywords_conv(keywords):
+    # sperate the keywords by "|" insted of ","
+    if "," in keywords:
+        keywords = keywords.replace(",", "|")
+    
+    return keywords
+
+
 def automate_meesho_listing(product_data, sku_folder):
     driver = None
     try:
@@ -265,7 +273,7 @@ def automate_meesho_listing(product_data, sku_folder):
         human_delay(1, 2)
         set_value(driver, product_data['sku'], "supplier_product_id")
         human_delay(1, 2)
-        set_value(driver, product_data['productName'], "product_name") 
+        set_value(driver, product_data['productName']+" "+keywords_conv(product_data['keywords']) , "product_name") 
         human_delay(1, 2)
         select_free_size(driver)
         human_delay(1, 2)
@@ -280,11 +288,15 @@ def automate_meesho_listing(product_data, sku_folder):
         human_delay(1, 2)
         select_gst_value(driver, product_data['color'], "color")
         human_delay(1, 2)
+        select_gst_value(driver, "Necklaces", "generic_name")
+        human_delay(1, 2)
         select_gst_value(driver, product_data['netQuantity'], "multipack")
         human_delay(1, 2)
         select_gst_value(driver, product_data['occasion'], "occasion")
         human_delay(1, 2)
         select_gst_value(driver, product_data['plating'], "plating")
+        human_delay(1, 2)
+        select_gst_value(driver, "cm", "product_dimension_unit")
         human_delay(1, 2)
         select_gst_value(driver, product_data['size'], "sizing")
         human_delay(1, 2)
@@ -294,9 +306,17 @@ def automate_meesho_listing(product_data, sku_folder):
         human_delay(1, 2)
         select_gst_value(driver, "India", "country_of_origin")
         human_delay(1, 2)
-        set_value(driver,"Kangan Siliguri", "manufacturer_details")
+        set_value(driver,"Kangan Siliguri", "manufacturer_name")
         human_delay(1, 2)
-        set_value(driver,"Kangan Siliguri", "packer_details")
+        set_value(driver,"1st fllor rg complex ss market, siliguri darjeeling, gorkhaland", "manufacturer_address")
+        human_delay(1, 2)
+        set_value(driver , "734001", "manufacturer_pincode")
+        human_delay(1, 2)
+        set_value(driver,"Kangan Siliguri", "packer_name")
+        human_delay(1, 2)
+        set_value(driver,"1st fllor rg complex ss market, siliguri darjeeling, gorkhaland", "packer_address")
+        human_delay(1, 2)
+        set_value(driver , "734001", "packer_pincode")
         human_delay(1, 2)
         select_gst_value(driver, "Gorkhastyle", "brand")
         human_delay(1, 2)

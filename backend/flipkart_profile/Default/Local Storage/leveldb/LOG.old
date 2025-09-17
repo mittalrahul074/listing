@@ -1,9 +1,9 @@
-2025/08/15-12:30:38.710 3a74 Reusing MANIFEST C:\Projects\ecommerce-listing-automation\backend\flipkart_profile\Default\Local Storage\leveldb/MANIFEST-000001
-2025/08/15-12:30:38.980 3a74 Recovering log #230
-2025/08/15-12:30:38.985 3a74 Reusing old log C:\Projects\ecommerce-listing-automation\backend\flipkart_profile\Default\Local Storage\leveldb/000230.log 
-2025/08/15-12:31:39.009 4830 Level-0 table #235: started
-2025/08/15-12:31:39.060 4830 Level-0 table #235: 42110 bytes OK
-2025/08/15-12:31:39.067 4830 Delete type=0 #230
-2025/08/15-12:32:39.511 4830 Level-0 table #237: started
-2025/08/15-12:32:39.530 4830 Level-0 table #237: 35165 bytes OK
-2025/08/15-12:32:39.537 4830 Delete type=0 #234
+2025/09/17-12:23:36.986 4464 Reusing MANIFEST C:\Projects\ecommerce-listing-automation\backend\flipkart_profile\Default\Local Storage\leveldb/MANIFEST-000001
+2025/09/17-12:23:37.003 4464 Recovering log #505
+2025/09/17-12:23:37.008 4464 Reusing old log C:\Projects\ecommerce-listing-automation\backend\flipkart_profile\Default\Local Storage\leveldb/000505.log 
+2025/09/17-12:24:37.036 2d7c Level-0 table #509: started
+2025/09/17-12:24:37.047 2d7c Level-0 table #509: 39607 bytes OK
+2025/09/17-12:24:37.051 2d7c Delete type=0 #505
+2025/09/17-12:25:39.883 2d7c Level-0 table #511: started
+2025/09/17-12:25:39.892 2d7c Level-0 table #511: 36084 bytes OK
+2025/09/17-12:25:39.895 2d7c Delete type=0 #508

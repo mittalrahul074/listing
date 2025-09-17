@@ -10,7 +10,7 @@
         "flipkart": true
     },
     "k_50_line_mile_sasto_2": {
-        "myntra": false,
+        "myntra": true,
         "meesho": false,
         "flipkart": true
     },
@@ -26,6 +26,191 @@
     },
     "k_940_anitque_stone": {
         "myntra": true,
+        "meesho": true,
+        "flipkart": true
+    },
+    "k_black_crystal_pati_peacock": {
+        "myntra": false,
+        "meesho": false,
+        "flipkart": true
+    },
+    "k_black_crystal_mustach_pati": {
+        "myntra": false,
+        "meesho": true,
+        "flipkart": true
+    },
+    "k_red_crystal_pati_peacock": {
+        "myntra": false,
+        "meesho": false,
+        "flipkart": true
+    },
+    "k_red_crystal_pati_mustach": {
+        "myntra": false,
+        "meesho": true,
+        "flipkart": true
+    },
+    "k_black_crystal_pati_v_locket": {
+        "myntra": false,
+        "meesho": true,
+        "flipkart": true
+    },
+    "k_red_crystal_pati_v_locket": {
+        "myntra": false,
+        "meesho": true,
+        "flipkart": true
+    },
+    "k_red_crytal_pati_cat": {
+        "myntra": false,
+        "meesho": true,
+        "flipkart": true
+    },
+    "k_red_crystal_pati_v_flower": {
+        "myntra": false,
+        "meesho": true,
+        "flipkart": true
+    },
+    "k_marron_white_hydro_hasli": {
+        "myntra": false,
+        "meesho": true,
+        "flipkart": true
+    },
+    "k_pearl_necklace_1900": {
+        "myntra": true,
+        "meesho": false,
+        "flipkart": false
+    },
+    "k_red_pipe_flower_tibertian_pearl_locket": {
+        "myntra": false,
+        "meesho": true,
+        "flipkart": true
+    },
+    "k_buddhist_cat_eye_locket_pearl": {
+        "myntra": false,
+        "meesho": false,
+        "flipkart": true
+    },
+    "k_green_pote_chain": {
+        "myntra": false,
+        "meesho": false,
+        "flipkart": false
+    },
+    "k_black_pote_chain": {
+        "myntra": false,
+        "meesho": true,
+        "flipkart": true
+    },
+    "k_chadke_tilhari_a": {
+        "myntra": false,
+        "meesho": true,
+        "flipkart": true
+    },
+    "k_multi_colour_chadke": {
+        "myntra": false,
+        "meesho": true,
+        "flipkart": true
+    },
+    "k_red_pipe_flower_green_pote": {
+        "myntra": false,
+        "meesho": true,
+        "flipkart": true
+    },
+    "k_sinny_red_big_c_tilhari_kache": {
+        "myntra": false,
+        "meesho": true,
+        "flipkart": true
+    },
+    "k_red_pipe_flower_red_pote": {
+        "myntra": false,
+        "meesho": true,
+        "flipkart": true
+    },
+    "k_blue_kitty_eye_green_pote": {
+        "myntra": false,
+        "meesho": true,
+        "flipkart": true
+    },
+    "k_kittyeye_tibetian_locket_red_pote": {
+        "myntra": false,
+        "meesho": true,
+        "flipkart": true
+    },
+    "k_round_yellow_pote": {
+        "myntra": false,
+        "meesho": true,
+        "flipkart": true
+    },
+    "k_green_navgeri": {
+        "myntra": false,
+        "meesho": true,
+        "flipkart": true
+    },
+    "k_blue_juppa_d_160": {
+        "myntra": false,
+        "meesho": true,
+        "flipkart": true
+    },
+    "k_kantha_small_b": {
+        "myntra": false,
+        "meesho": true,
+        "flipkart": true
+    },
+    "k_lavender_sasto_pote": {
+        "myntra": false,
+        "meesho": false,
+        "flipkart": true
+    },
+    "k_silver_jantar_big": {
+        "myntra": false,
+        "meesho": true,
+        "flipkart": true
+    },
+    "k_sinny_mint_green_sasto_pote": {
+        "myntra": false,
+        "meesho": true,
+        "flipkart": true
+    },
+    "k_sinny_dark_orange_rich_pote": {
+        "myntra": true,
+        "meesho": true,
+        "flipkart": true
+    },
+    "k_sinny_light_orange_rich_pote": {
+        "myntra": false,
+        "meesho": true,
+        "flipkart": true
+    },
+    "k_green_cut_pote_Sasto": {
+        "myntra": false,
+        "meesho": true,
+        "flipkart": true
+    },
+    "k_mendhi_green_sasto_pote": {
+        "myntra": false,
+        "meesho": true,
+        "flipkart": true
+    },
+    "k_peach_cut_pote_sasto_A": {
+        "myntra": false,
+        "meesho": true,
+        "flipkart": true
+    },
+    "k_chadke_tilhari_b": {
+        "myntra": false,
+        "meesho": true,
+        "flipkart": true
+    },
+    "k_green_navgeri_hand": {
+        "myntra": true,
+        "meesho": true,
+        "flipkart": true
+    },
+    "k_hydro_green_c_tilhari_big": {
+        "myntra": false,
+        "meesho": true,
+        "flipkart": false
+    },
+    "k_hydro_blue_c_tilhari_big": {
+        "myntra": false,
         "meesho": true,
         "flipkart": true
     }

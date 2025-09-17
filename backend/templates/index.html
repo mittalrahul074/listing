@@ -206,6 +206,11 @@
                             </div>
 
                             <div class="form-group">
+                                <label class="form-label" for="keywords">Search Keywords <span class="required">*</span> {{ macros.platform_indicators('f,me,my') }}</label>
+                                <input type="text" id="keywords" name="keywords" class="form-input" value="necklace, gold necklace, fashion jewelry">
+                            </div>
+
+                            <div class="form-group">
                                 <label class="form-label" for="gst-dropdown">GST(%) <span class="required">*</span> {{ macros.platform_indicators('f,me') }}</label>
                                 <select name="gst" id="gst-dropdown" required>
                                     <option value="">Select GST</option>
