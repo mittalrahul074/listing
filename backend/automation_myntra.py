@@ -170,11 +170,10 @@ def set_up_excel(product_data: dict) -> str:
 
         # Map column numbers to product fields
         value_map = {
-            1:1,
             2:1,
             3:  product_data['sku'],
             4:  product_data['productName'],
-            5:  product_data['productName'],
+            5:  product_data['sku'],
             7:  "Mittal Distributors, 1st floor niladri galaxy, bidhan market, darjeeling, 734001",
             8:  "Mittal Distributors, 1st floor niladri galaxy, bidhan market, darjeeling, 734001",
             16: "Onesize",
@@ -203,11 +202,12 @@ def set_up_excel(product_data: dict) -> str:
         select_from_dropdown(sheet,row,24,2)
         select_from_dropdown_by_text(sheet,row,25,"Gold")
         select_from_dropdown(sheet,row,28,1)
-        select_from_dropdown(sheet,row,29,4)
         select_from_dropdown_by_text(sheet,row,30,"2025")
         select_from_dropdown(sheet,row,31,1)
+        select_from_dropdown_by_text(sheet,row,40,"Ethnic")
         select_from_dropdown_by_text(sheet,row,41,product_data['material'])
         select_from_dropdown_by_text(sheet,row,42,"NA")
+        select_from_dropdown_by_text(sheet,row,42,"Necklace")
         select_from_dropdown_by_text(sheet,row,45,"NA")
         select_from_dropdown(sheet,row,47,4)
         select_from_dropdown_by_text(sheet,row,48,"Gold Plated")

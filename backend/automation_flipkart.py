@@ -850,7 +850,7 @@ def automate_flipkart_listing(product_data, sku_folder):
             set_input_value_with_retry(driver, "sku_id", product_data['sku'])
             set_select_with_retry(driver, "listing_status", "ACTIVE")
             set_input_value_with_retry(driver, "mrp", product_data['product_mrp'])
-            set_input_value_with_retry(driver, "flipkart_selling_price", product_data['meesho_price'])
+            set_input_value_with_retry(driver, "flipkart_selling_price", product_data['flipkart_price'])
             set_select_with_retry(driver,"minimum_order_quantity", "1")
             set_select_with_retry(driver, "service_profile", "NON_FBF")
             set_select_with_retry(driver,"procurement_type","REGULAR")

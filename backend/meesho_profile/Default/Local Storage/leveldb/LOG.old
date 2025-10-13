@@ -1,15 +1,6 @@
-2025/09/18-03:00:50.778 4c98 Reusing MANIFEST C:\Projects\ecommerce-listing-automation\backend\meesho_profile\Default\Local Storage\leveldb/MANIFEST-000001
-2025/09/18-03:00:50.799 4c98 Recovering log #250
-2025/09/18-03:00:50.804 4c98 Reusing old log C:\Projects\ecommerce-listing-automation\backend\meesho_profile\Default\Local Storage\leveldb/000250.log 
-2025/09/18-03:01:50.873 4c98 Level-0 table #254: started
-2025/09/18-03:01:50.881 4c98 Level-0 table #254: 11512 bytes OK
-2025/09/18-03:01:50.886 4c98 Delete type=0 #250
-2025/09/18-03:01:50.887 4c98 Compacting 4@0 + 1@1 files
-2025/09/18-03:01:50.943 4c98 Generated table #255@0: 21403 keys, 292595 bytes
-2025/09/18-03:01:50.943 4c98 Compacted 4@0 + 1@1 files => 292595 bytes
-2025/09/18-03:01:50.945 4c98 compacted to: files[ 0 1 1 0 0 0 0 ]
-2025/09/18-03:01:51.036 4c98 Delete type=2 #242
-2025/09/18-03:01:51.037 4c98 Delete type=2 #245
-2025/09/18-03:01:51.037 4c98 Delete type=2 #248
-2025/09/18-03:01:51.037 4c98 Delete type=2 #251
-2025/09/18-03:01:51.037 4c98 Delete type=2 #254
+2025/09/18-03:06:44.686 ac0 Reusing MANIFEST C:\Projects\ecommerce-listing-automation\backend\meesho_profile\Default\Local Storage\leveldb/MANIFEST-000001
+2025/09/18-03:06:44.697 ac0 Recovering log #253
+2025/09/18-03:06:44.703 ac0 Reusing old log C:\Projects\ecommerce-listing-automation\backend\meesho_profile\Default\Local Storage\leveldb/000253.log 
+2025/09/18-03:07:44.744 4ca0 Level-0 table #258: started
+2025/09/18-03:07:44.766 4ca0 Level-0 table #258: 12176 bytes OK
+2025/09/18-03:07:44.768 4ca0 Delete type=0 #253

@@ -1,1 +1,6 @@
 venv/
+backend/meesho_profile/
+backend/flipkart_profile/
+backend/myntra_profile/
+backend/_pycache_/
+images/
