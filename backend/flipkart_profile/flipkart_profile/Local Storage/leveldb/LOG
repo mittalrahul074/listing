@@ -1,11 +1,24 @@
-2025/09/18-02:56:47.443 3648 Reusing MANIFEST C:\Projects\ecommerce-listing-automation\backend\flipkart_profile\flipkart_profile\Local Storage\leveldb/MANIFEST-000001
-2025/09/18-02:56:47.462 3648 Recovering log #20
-2025/09/18-02:56:47.465 3648 Level-0 table #24: started
-2025/09/18-02:56:47.704 3648 Level-0 table #24: 42280 bytes OK
-2025/09/18-02:56:47.712 3648 Delete type=0 #20
-2025/09/18-02:57:47.731 318 Level-0 table #27: started
-2025/09/18-02:57:47.743 318 Level-0 table #27: 35618 bytes OK
-2025/09/18-02:57:47.747 318 Delete type=0 #25
-2025/09/18-02:58:49.515 318 Level-0 table #29: started
-2025/09/18-02:58:49.522 318 Level-0 table #29: 35520 bytes OK
-2025/09/18-02:58:49.525 318 Delete type=0 #26
+2025/10/17-19:00:36.770 181c Reusing MANIFEST C:\Projects\ecommerce-listing-automation\backend\flipkart_profile\flipkart_profile\Local Storage\leveldb/MANIFEST-000001
+2025/10/17-19:00:36.781 181c Recovering log #47
+2025/10/17-19:00:36.785 181c Reusing old log C:\Projects\ecommerce-listing-automation\backend\flipkart_profile\flipkart_profile\Local Storage\leveldb/000047.log 
+2025/10/17-19:01:36.798 4b6c Level-0 table #51: started
+2025/10/17-19:01:36.805 4b6c Level-0 table #51: 45968 bytes OK
+2025/10/17-19:01:36.808 4b6c Delete type=0 #47
+2025/10/17-19:02:37.909 4b6c Level-0 table #53: started
+2025/10/17-19:02:37.946 4b6c Level-0 table #53: 35720 bytes OK
+2025/10/17-19:02:37.949 4b6c Delete type=0 #50
+2025/10/17-19:02:37.950 4b6c Compacting 4@0 + 1@1 files
+2025/10/17-19:02:37.964 4b6c Generated table #54@0: 18 keys, 36347 bytes
+2025/10/17-19:02:37.964 4b6c Compacted 4@0 + 1@1 files => 36347 bytes
+2025/10/17-19:02:37.966 4b6c compacted to: files[ 0 1 0 0 0 0 0 ]
+2025/10/17-19:02:37.968 4b6c Delete type=2 #44
+2025/10/17-19:02:37.969 4b6c Delete type=2 #46
+2025/10/17-19:02:37.969 4b6c Delete type=2 #48
+2025/10/17-19:02:37.969 4b6c Delete type=2 #51
+2025/10/17-19:02:37.969 4b6c Delete type=2 #53
+2025/10/17-19:10:27.730 4b6c Level-0 table #56: started
+2025/10/17-19:10:27.738 4b6c Level-0 table #56: 42572 bytes OK
+2025/10/17-19:10:27.740 4b6c Delete type=0 #52
+2025/10/17-19:10:42.355 4b6c Level-0 table #58: started
+2025/10/17-19:10:42.376 4b6c Level-0 table #58: 39135 bytes OK
+2025/10/17-19:10:42.379 4b6c Delete type=0 #55

@@ -297,6 +297,10 @@ def automate_meesho_listing(product_data, sku_folder):
         human_delay(1, 2)
         select_gst_value(driver, "cm", "product_dimension_unit")
         human_delay(1, 2)
+        set_value(driver,"5", "product_length")
+        human_delay(1, 2)
+        set_value(driver,"5", "product_width")
+        human_delay(1, 2)
         select_gst_value(driver, product_data['size'], "sizing")
         human_delay(1, 2)
         select_gst_value(driver, product_data['stoneType'], "stone_type")
@@ -385,7 +389,6 @@ def automate_meesho_listing(product_data, sku_folder):
             human_delay(0.5, 1.0)
             proceed_btn.click()
             print("✅ Clicked 'Proceed' in submission dialog.")
-            mark_completed(product_data['sku'], "meesho")
             return True
         except TimeoutException as e:
             print(f"❌ Error clicking 'Proceed' button: {e}")
@@ -394,6 +397,8 @@ def automate_meesho_listing(product_data, sku_folder):
         # Optionally close browser at end
         # driver.quit()
 
+        mark_completed(product_data['sku'], "meesho")
+    
     except Exception as e:
         import traceback
         print("=== Exception Trace ===")

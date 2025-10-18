@@ -1,14 +1,4 @@
 {
-    "k_gs_50_line_hydro_mile_sasto": {
-        "myntra": true,
-        "meesho": false,
-        "flipkart": true
-    },
-    "k_kantha_small": {
-        "myntra": true,
-        "meesho": true,
-        "flipkart": true
-    },
     "k_50_line_mile_sasto_2": {
         "myntra": true,
         "meesho": false,
@@ -16,16 +6,6 @@
     },
     "k_ds_green_navgeri": {
         "myntra": false,
-        "meesho": true,
-        "flipkart": true
-    },
-    "k_gs_green_mile": {
-        "myntra": true,
-        "meesho": true,
-        "flipkart": true
-    },
-    "k_940_anitque_stone": {
-        "myntra": true,
         "meesho": true,
         "flipkart": true
     },
@@ -169,11 +149,6 @@
         "meesho": true,
         "flipkart": true
     },
-    "k_sinny_dark_orange_rich_pote": {
-        "myntra": true,
-        "meesho": true,
-        "flipkart": true
-    },
     "k_sinny_light_orange_rich_pote": {
         "myntra": false,
         "meesho": true,
@@ -199,11 +174,6 @@
         "meesho": true,
         "flipkart": true
     },
-    "k_green_navgeri_hand": {
-        "myntra": true,
-        "meesho": true,
-        "flipkart": true
-    },
     "k_hydro_green_c_tilhari_big": {
         "myntra": false,
         "meesho": true,
@@ -212,6 +182,16 @@
     "k_hydro_blue_c_tilhari_big": {
         "myntra": false,
         "meesho": true,
+        "flipkart": true
+    },
+    "k_green_navgeri_aa": {
+        "myntra": false,
+        "meesho": false,
+        "flipkart": true
+    },
+    "k_mint_juppa_171025": {
+        "myntra": true,
+        "meesho": false,
         "flipkart": true
     }
 }

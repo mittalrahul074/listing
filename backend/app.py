@@ -4,6 +4,7 @@ from pathlib import Path
 from automation_meesho import automate_meesho_listing
 from automation_flipkart import automate_flipkart_listing
 from automation_myntra import automate_myntra_listing
+from sku_tracker import mark_completed, is_completed, check_and_move_all_completed_skus
 
 app = Flask(__name__)
 
@@ -15,6 +16,7 @@ app.template_folder = 'templates'
 def main_form():
     # Dynamically collect SKUs present in /images/ folder, or pull from database
     import os
+    check_and_move_all_completed_skus()  # Clean up completed SKUs on each load
     sku_list = sorted(os.listdir(os.path.join(os.path.dirname(__file__), '..', 'images')))  # path to root/images
 
     gst_list = [3, 5, 12, 18]
